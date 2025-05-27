@@ -8,4 +8,7 @@ public class Acessos {
         acessos.put("admin", "1234");
         return acessos;
     }
+    public static void adicionarAcesso(String usuario, String senha) {
+        acessos().put(usuario, senha);
+    }
 }
