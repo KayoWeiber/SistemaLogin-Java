@@ -22,7 +22,7 @@ public class TelaInicial {
         campoUsuario.setBounds(125, 110, 150, 30);
 
         JLabel labelSenha = new JLabel("Senha:");
-        labelSenha.setBounds(150, 150, 100, 30);
+        labelSenha.setBounds(150, 150,100, 30);
 
         JPasswordField campoSenha = new JPasswordField();
         campoSenha.setBounds(125, 180, 150, 30);

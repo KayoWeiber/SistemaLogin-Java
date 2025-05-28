@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Dictionary;
 
 public class CadastroUsuario {
 
@@ -35,19 +36,27 @@ public class CadastroUsuario {
         //System.out.println("Componentes adicionados à janela de cadastro!");
         // Listener do botão
         botaoCadastrar.addActionListener(e -> {
+            System.out.println("apertou o button");
+
             String usuario = campoUsuario.getText();
             String senha = new String(campoSenha.getPassword());
             if (usuario.trim().isEmpty() || senha.trim().isEmpty()){
                 JOptionPane.showMessageDialog(janelaCadastro, "Preencha os campos corretamente!");
             }else{
-                java.util.Dictionary<String, String> acessos = Acessos.acessos();
-                if (acessos.get(usuario).equals(usuario)) {
+                System.out.println("entrou no else");
+                Acessos acessosOBJ= new Acessos();
+                Dictionary<String, String> acessos = acessosOBJ.getAcessos();
+                System.out.println("criou dicionario");
+
+                if (acessos.get(usuario) !=null) {
+
                     JOptionPane.showMessageDialog(janelaCadastro, "Usuário já cadastrado!");
                 }else{
-                        Acessos.adicionarAcesso(usuario, senha);
-                        JOptionPane.showMessageDialog(janelaCadastro, "Usuário cadastrado com sucesso!");
-                        janelaCadastro.dispose(); // Fecha a janela de cadastro após o sucesso
-                        new TelaInicial(); // Abre a tela inicial novamente
+
+                    acessosOBJ.adicionarAcesso(usuario, senha);
+                    JOptionPane.showMessageDialog(janelaCadastro, "Usuário cadastrado com sucesso!");
+                    janelaCadastro.dispose(); // Fecha a janela de cadastro após o sucesso
+                    new TelaInicial(); // Abre a tela inicial novamente
                     }
                 }
 

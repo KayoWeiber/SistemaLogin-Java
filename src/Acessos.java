@@ -3,12 +3,17 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Acessos {
-    public static Dictionary<String, String> acessos() {
-        Dictionary<String, String> acessos = new Hashtable<>();
-        acessos.put("admin", "1234");
-        return acessos;
+    private Dictionary<String, String> acessos = new Hashtable<>();
+    public Acessos(){
+        acessos.put("admin","1234");
     }
-    public static void adicionarAcesso(String usuario, String senha) {
-        acessos().put(usuario, senha);
+
+    public Dictionary<String, String> getAcessos() {
+        return this.acessos;
+    }
+    public void adicionarAcesso(String usuario, String senha) {
+        System.out.println("chegou aqui111");
+        this.acessos.put(usuario, senha);
+        System.out.println("Aqui foi2222");
     }
 }
